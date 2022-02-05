@@ -34,7 +34,6 @@ kotlin {
                 api(ktor.logging)
                 api(ktor.serialization)
                 api(ktor.contentNegotiation)
-                //api(ktor.okhttp)
             }
         }
         val commonTest by getting {
@@ -58,6 +57,7 @@ kotlin {
             dependencies {
                 api(compose.preview)
                 api(ktor.okhttp)
+                api(ktor.gson)
             }
         }
         val desktopTest by getting

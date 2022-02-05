@@ -1,5 +1,7 @@
 package app.cadere.ui.common.di
 
+import app.cadere.ui.common.network.repository.DefaultLocationApi
+import app.cadere.ui.common.network.service.LocationApi
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.KoinApplication
 import org.koin.core.component.KoinComponent
@@ -13,26 +15,23 @@ import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 
 
-fun initKoin(appModule: Module): KoinApplication {
+fun initKoin(): KoinApplication {
     val koinApplication = startKoin {
         modules(
-            appModule,
             platformModule,
             coreModule
         )
     }
 
-    // Dummy initialization logic, making use of appModule declarations for demonstration purposes.
-    val koin = koinApplication.koin
-    // doOnStartup is a lambda which is implemented in Swift on iOS side
-    val doOnStartup = koin.get<() -> Unit>()
-    doOnStartup.invoke()
-
     return koinApplication
 }
 
 private val coreModule = module {
-
+    single<LocationApi> {
+        DefaultLocationApi(
+            get()
+        )
+    }
 }
 
 internal inline fun <reified T> Scope.getWith(vararg params: Any?): T {

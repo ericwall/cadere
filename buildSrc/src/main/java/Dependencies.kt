@@ -29,6 +29,7 @@ object Deps {
     const val apolloNormalizedCache = "com.apollographql.apollo3:apollo-normalized-cache:${Versions.apollo}"
     const val multiplatformPaging = "io.github.kuuuurt:multiplatform-paging:${Versions.multiplatformPaging}"
 
+
     object Kotlinx {
         const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxCoroutines}"
     }
@@ -64,6 +65,8 @@ object ktor {
     val okhttp = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
     val serialization = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
     val contentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
+    val gson = "io.ktor:ktor-gson:1.6.5"
     val mock = "io.ktor:ktor-client-mock:${Versions.ktor}"
 }
+
 
