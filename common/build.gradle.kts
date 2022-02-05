@@ -22,6 +22,19 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
+
+                api(Koin.core)
+
+
+                api(Deps.apolloRuntime)
+                api(Deps.apolloNormalizedCache)
+                api(Deps.multiplatformPaging)
+
+                api(ktor.core)
+                api(ktor.logging)
+                api(ktor.serialization)
+                api(ktor.contentNegotiation)
+                //api(ktor.okhttp)
             }
         }
         val commonTest by getting {
@@ -31,8 +44,9 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.appcompat:appcompat:1.2.0")
-                api("androidx.core:core-ktx:1.3.1")
+                api("androidx.appcompat:appcompat:1.4.1")
+                api("androidx.core:core-ktx:1.7.0")
+                api(ktor.okhttp)
             }
         }
         val androidTest by getting {
@@ -43,6 +57,7 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 api(compose.preview)
+                api(ktor.okhttp)
             }
         }
         val desktopTest by getting
@@ -50,11 +65,11 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(31)
+        minSdk = 24
+        targetSdk = 31
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
